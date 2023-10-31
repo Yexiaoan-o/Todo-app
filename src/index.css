@@ -1,0 +1,160 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #f5f5f5;
+  height: 100vh;
+
+}
+
+main {
+  text-align: center;
+}
+
+h1 {
+  margin: 1.2rem 0;
+  color: #e9d9d7;
+  font-size: 7rem;
+  font-weight: normal;
+  letter-spacing: 3px;
+}
+
+.container{
+  position: relative;
+  width: 450px;
+  margin: auto;
+  box-shadow: 0 5px 5px 0 rgb(167, 167, 167);
+}
+
+input {
+  width: 450px;
+  height: 60px;
+  border: none;
+  padding:  10px 10px 10px 50px;
+  border-bottom: 1px solid #aeadad;
+  caret-color: #727272;
+  font-size: 1.2rem;
+}
+
+input:focus{
+  outline: none;
+}
+
+input::placeholder{
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  color: #d9d6d6;
+  font-style: italic;
+}
+
+footer {
+  width: 200px;
+  margin: 80px auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.todo {
+  position: relative;
+  width: 450px;
+  min-height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #aeadad;
+  text-align: left;
+  font-size: 1.8rem;
+}
+
+.todo p {
+  width: 350px;
+  padding-top: 10px;
+  margin-left: 60px;
+  word-wrap: break-word;
+}
+
+.completed  p{
+  text-decoration: line-through;
+  color: gray;
+  transition: color 0.3s;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #aeadad;
+  border-radius: 100%;
+}
+
+.todo:hover > .close {
+  opacity: 1;
+}
+.close {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  font-size: 30px;
+  color: #b3726a;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+}
+
+.check {
+  opacity: 0;
+  font-size: 1.4rem;
+  color: rgb(41, 169, 41);
+  transform: translate(2px, -1px)
+}
+
+.completed .check {
+  opacity: 1;
+}
+
+
+
+.todo-footer{
+  display: flex;
+  height: 40px;
+  justify-content: space-evenly;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+.all, .active, .checked {
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.all:hover, .active:hover, .checked:hover, 
+.all.focus, .active.focus, .checked.focus{
+  border: 1px solid #e2c6c2;
+  border-radius: 5px;
+}
+
+.clear {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.checkall {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #aeadad;
+  border-radius: 100%;
+  left: 10px;
+  top: 15px;
+}
+
+
