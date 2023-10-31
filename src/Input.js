@@ -3,7 +3,7 @@ import Todo from "./Todo";
 
 export default function Input() {
   const localTodos = JSON.parse(localStorage.getItem("todos")); // Read and parse the todo object array stored locally
-  const [todos, setTodos] = useState(localTodos); // Declare the todo object array as a state, and initialize the state to locally stored array
+  const [todos, setTodos] = useState(localTodos || []); // Declare the todo object array as a state, and initialize the state to locally stored array
   const [todoElements, setTodoElements] = useState([]); // Declare the todo element array as a state, and initialize the state to an empty array
   const [text, setText] = useState(""); // Declare the todo text as a state, and initialize the state to an empty string
 
@@ -90,7 +90,7 @@ export default function Input() {
   // The function deletes all checked todos upon a click on the clearall button
   function delChecked() {
     setTodos((prev) => {
-      const newTodos = prev.filter((todo) => todo.isComplete == false);
+      const newTodos = prev.filter((todo) => todo.isComplete === false);
       localStorage.setItem("todos", JSON.stringify(newTodos));
       return newTodos;
     });
@@ -98,9 +98,9 @@ export default function Input() {
 
   // The function filters todos by active (unchecked), checked, and all
   function filterElements(e) {
-    if (e.target.id == "active") {
+    if (e.target.id === "active") {
       setTodoElements(convertArray(uncheckedTodos));
-    } else if (e.target.id == "checked") {
+    } else if (e.target.id === "checked") {
       setTodoElements(convertArray(checkedTodos));
     } else {
       setTodoElements(convertArray(todos));
@@ -108,8 +108,8 @@ export default function Input() {
   }
 
   // Filter checked and unchecked todos for the display of filtered todos
-  const checkedTodos = todos.filter((todo) => todo.isComplete == true);
-  const uncheckedTodos = todos.filter((todo) => todo.isComplete == false);
+  const checkedTodos = todos.filter((todo) => todo.isComplete === true);
+  const uncheckedTodos = todos.filter((todo) => todo.isComplete === false);
 
   return (
     <div className="container">
