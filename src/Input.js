@@ -25,7 +25,6 @@ export default function Input() {
           delTodo={delTodo}
           checkTodo={checkTodo}
           handleToggleEdit={handleToggleEdit}
-          handleTextChange={handleTextChange}
           handleEditTodo={handleEditTodo}
           handleKeyDown={handleKeyDown}
         />
@@ -39,7 +38,7 @@ export default function Input() {
     setText(e.target.value);
   }
 
-  // The function writes the todo text and todo status into the todo objecy array upon a press on the Enter key
+  // The function writes the todo text and todo status into the todo object array upon a press on the Enter key
   function getText(e) {
     if (e.key === "Enter" && text.trim() !== "") {
       setTodos((prev) => {
@@ -117,17 +116,7 @@ export default function Input() {
     });
   }
   
-  // The function monitors the changes on the textarea for changing value in the text value
-  function handleTextChange(index, newText){
-    setTodos((prev) => {
-      const newTodos = [...prev];
-      newTodos[index] = {
-        ...newTodos[index],
-        text: newText,
-      };
-      return newTodos;
-    });
-  }
+
 
   // The function updates the changed text and ends editing
   function handleEditTodo(index, newText){
@@ -138,8 +127,9 @@ export default function Input() {
         text: newText,
         isEditing: false
       };
-      localStorage.setItem("todos", JSON.stringify(newTodos));
-      return newTodos;
+      const filteredTodos = newTodos.filter(todo => todo.text !== '' )
+      localStorage.setItem("todos", JSON.stringify(filteredTodos));
+      return filteredTodos;
     });
   }
   

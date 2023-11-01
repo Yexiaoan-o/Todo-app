@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { CheckOutlined } from "@ant-design/icons";
 
 const Todo = ({
@@ -9,10 +9,10 @@ const Todo = ({
   isEditing,
   checkTodo,
   handleToggleEdit,
-  handleTextChange,
   handleEditTodo,
   handleKeyDown
 }) => {
+  const [editedText, setEditedText] = useState(text)
   return (
     <div className={isComplete ? "todo completed" : "todo"}>
       <div id={id} className="circle" onClick={() => checkTodo(id)}>
@@ -21,11 +21,10 @@ const Todo = ({
       {isEditing ? (
         <textarea
         id={id}
-        value={text}
-        onChange={(e) => handleTextChange(id, e.target.value)}
-        onKeyDown={(e) => handleKeyDown(e, id, text)}
-        onBlur={() => handleEditTodo(id, text)}
-        autoFocus
+        value={editedText}
+        onChange={(e) => setEditedText(e.target.value)}
+        onKeyDown={(e) => handleKeyDown(e, id, editedText)}
+        onBlur={() => handleEditTodo(id, editedText)}
       />
       ) : (
         <p id={id} onDoubleClick={() => handleToggleEdit(id)}>
