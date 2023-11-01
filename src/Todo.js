@@ -9,7 +9,8 @@ const Todo = ({text, id, delTodo, completeStatus, checkTodo}) => {
       <div id={id} className="circle" onClick={() => checkTodo(id)}>
         <CheckOutlined className="check" />
       </div>
-      <p>{text}</p>
+      <p  >{text}</p>
+
       <button id={id} onClick={delTodo} className="close">
         ×
       </button>

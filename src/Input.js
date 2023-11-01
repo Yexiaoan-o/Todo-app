@@ -39,7 +39,10 @@ export default function Input() {
     if (e.key === "Enter" && text.trim() !== "") {
       setTodos((prev) => {
         let newTodos = [...prev];
-        newTodos = [...newTodos, { text: text, isComplete: false }];
+        newTodos = [
+          ...newTodos,
+          { text: text, isComplete: false, isEditing: false },
+        ];
         localStorage.setItem("todos", JSON.stringify(newTodos)); // Update the local storage
         return newTodos;
       });

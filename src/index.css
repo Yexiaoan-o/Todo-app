@@ -76,6 +76,10 @@ a {
   word-wrap: break-word;
 }
 
+p:hover{
+  cursor: default;
+}
+
 .completed  p{
   text-decoration: line-through;
   color: gray;
@@ -156,5 +160,19 @@ a {
   left: 10px;
   top: 15px;
 }
+
+/* .textarea {
+  position: absolute;
+  width: 390px;
+  top: 0;
+  left: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+  z-index: 9999;
+}
+
+textarea:focus{
+  outline: none;
+} */
 
 
