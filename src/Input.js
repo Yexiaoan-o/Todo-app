@@ -19,10 +19,15 @@ export default function Input() {
         <Todo
           key={index}
           text={todo.text}
-          completeStatus={todo.isComplete}
+          isComplete={todo.isComplete}
+          isEditing={todo.isEditing}
           id={index}
           delTodo={delTodo}
           checkTodo={checkTodo}
+          handleToggleEdit={handleToggleEdit}
+          handleTextChange={handleTextChange}
+          handleEditTodo={handleEditTodo}
+          handleKeyDown={handleKeyDown}
         />
       );
     });
@@ -98,6 +103,55 @@ export default function Input() {
       return newTodos;
     });
   }
+
+
+  // The function toggles the edit state of a todo
+  function handleToggleEdit(index){
+    setTodos((prev) => {
+      const newTodos = [...prev];
+      newTodos[index] = {
+        ...newTodos[index],
+        isEditing: !newTodos[index].isEditing,
+      };
+      return newTodos;
+    });
+  }
+  
+  // The function monitors the changes on the textarea for changing value in the text value
+  function handleTextChange(index, newText){
+    setTodos((prev) => {
+      const newTodos = [...prev];
+      newTodos[index] = {
+        ...newTodos[index],
+        text: newText,
+      };
+      return newTodos;
+    });
+  }
+
+  // The function updates the changed text and ends editing
+  function handleEditTodo(index, newText){
+    setTodos((prev) => {
+      const newTodos = [...prev];
+      newTodos[index] = {
+        ...newTodos[index],
+        text: newText,
+        isEditing: false
+      };
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
+    });
+  }
+  
+  // The function updates the changed text upon a press on the Enter key
+  function handleKeyDown(e, index, text){
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleEditTodo(index, text)
+    }
+  }
+
+
 
   // The function filters todos by active (unchecked), checked, and all
   function filterElements(e) {

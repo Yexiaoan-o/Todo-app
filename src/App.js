@@ -6,7 +6,7 @@ export default function App() {
       <h1>todos</h1>
       <Input />
       <footer>
-        Created by <a href="https://github.com/Yexiaoan-o" target="_blank">Oliver</a>
+       Double-click to edit a todo <br/> Created by <a href="https://github.com/Yexiaoan-o" target="_blank">Oliver</a>
       </footer>
     </main>
   );
